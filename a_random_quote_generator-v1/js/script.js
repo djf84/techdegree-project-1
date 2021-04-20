@@ -2,60 +2,81 @@
 Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
 ******************************************/
-
-// For assistance: 
-  // Check the "Project Resources" section of the project instructions
-  // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
-
-/*** 
- * `quotes` array 
-***/
+// Objective: meets expectations grade
+// Create quotes array 
 
 let quotes = [ 
 
-  {
-    quote:  ' "The best way to get started is to quite talking and begin doing." ',
-    source: 'Walt Disney',
-    citation: 'The Disney Company'
-}
+{
+  quote:  ' "Less than one percent of the information our brains receive through the senses actually reaches our awareness." ',
+  source: 'Yongey Mingyur Rinpoche',
+  citation: 'Joyful Wisdom',
+  year: 2010
+},
 
 {
-  quote:  ' "The pessimist sees difficulty in every opportunity. The optimist sees opportunity in every difficulty." ',
-  source: 'Winston Churchill',
-  year: '1945'
-}
+  quote:  ' "He had learned endurance from the Spartans, how far sheer will could take a man if he were sufficiently determined – and if no one ever told him it was all right to lie down and die." ',
+  source: 'Conn Iggulden',
+  citation: 'The Falcon of Sparta',
+  year: 2018
+},
 
 {
   quote:  ' "Do not let yesterday take up too much of today. " ',
   source: 'Will Rogers'
-}
+},
 
 {
   quote:  ' "It is not whether you get knocked down, it is whether you get up. " ',
-  source: 'Vince Lombardi',
-}
+  source: 'Vince Lombardi'
+},
 
 {
   quote:  ' "If you are working on something that you really care about, you do not have to be pushed. The vision pulls you." ',
   source: 'Steve Jobs'
 }
-
 ];
 
+// Create the `getRandomQuote` function
 
-/***
- * `getRandomQuote` function
-***/
+function getRandomQuote() {
 
+  // 1. Create the random number variable
+  
+  const randomNumber = Math.ceil ( Math.random() * quotes.length - 1);
+  console.log(randomNumber);
 
+  // 2. Store the random quote in a variable
 
+  let randomQuote = quotes[randomNumber]
+  console.log(randomQuote);
+  // 3. Return the variable storing the random quote object
 
-/***
- * `printQuote` function
-***/
+  return randomQuote;
+}
 
+// Create the `printQuote` function
 
+function printQuote() {
 
+let quotes = getRandomQuote();
+
+let elementQuote ='<p class="quote">' + quotes.quote + '</p>';
+elementQuote +=  '<p class="source">' + quotes.source;
+
+if (quotes.citation) {
+  elementQuote += '<span class="citation">' + quotes.citation + '</span>';
+}
+
+if(quotes.year){
+  elementQuote += `<span class='year'>${quotes.year}</span>`;
+}
+
+elementQuote += `</p>`;
+
+document.getElementById('quote-box').innerHTML = elementQuote; 
+}
+ 
 /***
  * click event listener for the print quote button
  * DO NOT CHANGE THE CODE BELOW!!
